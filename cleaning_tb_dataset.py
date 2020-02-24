@@ -31,12 +31,17 @@ required_data = tb_dataset.query('country == "AD" and year==1996')
 required_data = required_data.melt(['country', 'year'],['f1524', 'm1524', 'f2534', 'm2534', 'f3544' ],'age', 'cases')
 required_data['sex'] = sex 
 
+# Renaming the names of the age columns
+required_data['age'] = required_data['age'].map({'f1524': '15-24', 'm1524':'15-24', 'f2534':'25-34', 'm2534':'25-34','f3544':'35-44' }) 
+
+
 #Setting the sequence of the schema
 sex = required_data.pop('sex')
 cases = required_data.pop('cases')
 
 required_data['sex'] = sex
 required_data['cases'] = cases
+
 
 
 
